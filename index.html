@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calendar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg" href="img/favicon/favicon-32x32.svg" sizes="32x32" data-mce-href="img/favicon/favicon-32x32.svg">
+    <link rel="icon" type="image/svg" href="img/favicon/android-chrome-192x192.svg" sizes="192x192" data-mce-href="img/favicon/android-chrome-192x192.svg">
+    <link rel="icon" type="image/svg" href="img/favicon/favicon-96x96.svg" sizes="96x96" data-mce-href="img/favicon/favicon-96x96.svg">
+    <link rel="icon" type="image/svg" href="img/favicon/favicon-16x16.svg" sizes="16x16" data-mce-href="img/favicon/favicon-16x16.svg">
+    <script src="https://kit.fontawesome.com/c9fb5803fb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="modal" class="modal">
+            <div class="modal__box">
+                <a id="modal__btn-close" class="modal__btn-close" href="#"><i class="fas fa-long-arrow-alt-left"></i></a>
+                <div class="modal__inner">
+                    <div class="modal-header">
+                        <div class="modal-header__title">Events</div>
+                        <div id="modal-header__date" class="modal-header__date">date</div>
+                    </div>
+                    <div id="modal-days" class="modal-days"></div>
+                    <div class="modal-btns">
+                        <ul class="modal-btns__list">
+                            <li><a class="modal-btns__item modal-btns__add" href="#"><i class="fas fa-plus"></i></a></li>
+                            <li><a class="modal-btns__item modal-btns__done" href="#"><i class="far fa-check-circle"></i></a></li>
+                            <li><a class="modal-btns__item modal-btns__pinned" href="#"><i class="fas fa-thumbtack"></i></a></li>
+                            <li><a class="modal-btns__item modal-btns__edit" href="#"><i class="fas fa-pen"></i></a></li>
+                            <li><a class="modal-btns__item modal-btns__remove" href="#"><i class="fas fa-trash-alt"></i></a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="modal-create-note new-note">
+                        <h3 class="new-note__header">Add new</h3>
+                        <form id="form">
+                            <div class="new-note__time">
+                                <label for="time-from">From
+                                    <input type="text" maxlength="5" id="note-time-from" class="time-from" name="time-from" placeholder="00:00">
+                                </label>
+                                <label for="time-to">To
+                                    <input type="text" maxlength="5" id="note-time-to" class="time-to" name="time-to" placeholder="00:00">
+                                </label> 
+                            </div>
+                            <div class="new-note__text">
+                                <label for="text">Description
+                                    <textarea id="new-note-text" class="new-note-text" name="text"></textarea>
+                                </label>
+                            </div>
+                            <div class="new-note__btns">
+                                <button class="new-note__add">save</button>
+                                <button class="new-note__remove" type="reset">reset</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-notes" class="modal-notes">
+                        <div class="modal-notes__list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="organizer">
+            <header class="header">My Calendar</header>
+            <div class="organizer__inner">
+                <div class="calendar">
+                    <div class="calendar__header">
+                        <div class="date"> 
+                            <div id="month" class="month"></div>
+                            <div id="year" class="year"></div>
+                        </div>
+                        <div class="btns">
+                            <span id="arrowPrev" class="arrow-prev"><i class="fas fa-chevron-up"></i></span>
+                            <span id="arrowNext" class="arrow-next"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                    </div>
+                    <table id="table"></table>
+                </div> 
+                <div id="sidebar-notes" class="notes"></div>
+            </div>
+        </section>
+        
+        
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

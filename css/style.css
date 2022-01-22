@@ -1,0 +1,585 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;700;800;900&family=Oswald:wght@200;300;400&display=swap');
+
+/*
+mons 200, 300, 600, 800
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+::-webkit-scrollbar { 
+    width: 0px;
+    background: transparent;
+}
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+body{
+    background-color: #18191D;
+}
+.header{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #dedbdb;
+    font-size: 14px;
+    padding: 15px 0 25px;
+}
+.organizer{
+    width: 1200px;
+    margin: 0 auto;
+}
+.organizer__inner{
+    display: flex;
+    justify-content: space-between;  
+}
+.calendar{
+    flex: 0 0 78%;
+    padding: 30px 25px;
+}
+.notes{
+    flex: 0 0 20%;
+}
+.calendar, .notes{
+    background: linear-gradient(to bottom, rgba(33,34,38,1) 0%,rgba(24,25,29,1) 100%);
+    border-radius: 5px;
+}
+.calendar__header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.calendar__header .date{
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+}
+
+.calendar__header .date .month{
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    font-size: 33px;
+}
+.calendar__header .date .year{
+    font-weight: 200;
+    font-size: 38px; 
+}
+.calendar__header .date .month, .calendar__header .date .year{
+     margin-right: 20px;
+
+     font-family: 'Montserrat', sans-serif;
+     letter-spacing: 0.3px;
+     color: #C7C7C5;
+     vertical-align: baseline;
+}
+.arrow-prev, .arrow-next{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    user-select: none;
+    display: inline-block;
+    padding: 10px 10px;
+}
+.arrow-prev:active, .arrow-next:active{
+    opacity: 0.3;
+}
+.arrow-prev{
+    margin-right: 10px;
+}
+.fa-chevron-up, .fa-chevron-down{
+    color:#C7C7C5;
+    font-size: 30px; 
+}
+
+
+table{
+    width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border: none;
+}
+td{
+    width: 14%;
+    height: 80px;
+
+    padding: 0 8px 6px 0;
+
+    font-family: 'Oswald', sans-serif;
+    color: #A6A6A8;
+    font-size: 15px;
+    text-align: right;
+    vertical-align: bottom;
+    border: 2px solid #1D1E23;
+    transition: linear 0.3s;
+    position: relative;
+}
+td:hover{
+    background-color: #212226;
+}
+td.thead{
+    padding: 0 12px 0 0;
+    height: 40px;
+    font-size: 18px;
+    letter-spacing: 0.3px;
+    vertical-align: middle;
+    border: none;
+}
+td.current{
+    color: #a81b1b;
+}
+td.prev, td.next{
+    color: #4C4D4D;
+}
+td.cell::before{
+    content: '';
+    position: absolute;
+    display: none;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    top: 49px;
+    right: 1px;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.4;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+td.cell[data-filled="true"]::before{
+    display: block;
+}
+td.cell::after{
+    content: '';
+    position: absolute;
+    display: none;
+    width: 104px;
+    height: 30px;
+    background-color: transparent;
+    top: 16px;
+    right: -8px;
+    border-radius: 40px;
+    text-align: center;
+    line-height: 28px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    z-index: 5;
+}
+td.cell.one::after{
+    background-color: #6256AA;
+    content: 'Event one';
+    display: block;
+}
+td.cell.two::after{
+    background-color: #05ADC7;
+    content: 'Event two';
+    display: block;
+}
+td.cell.three::after{
+    background-color: #3D5AFE;
+    content: 'Event three';
+    display: block;
+}
+td.cell.four::after{
+    background-color: #FF4181;
+    content: 'Event four';
+    display: block;
+}
+td.cell.five::after{
+    background-color: #F19238;
+    content: 'Event five';
+    display: block;
+}
+/* NOTES */
+.notes {
+    padding: 15px 8px;
+}
+.note {
+    width: 90%;
+    height: 105px;
+
+    margin: 10px auto 15px;
+
+    background-color: #6256AA;
+    border-radius: 3px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    cursor: pointer;
+}
+.note.one {
+    background-color: #6256AA;
+}
+.note.two {
+    background-color: #05ADC7;
+}
+.note.three {
+    background-color: #3D5AFE;
+}
+.note.four {
+    background-color: #FF4181;
+}
+.note.five {
+    background-color: #F19238;
+}
+.row {
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+}
+.row.row-descrip{
+    padding: 0 20px;
+}
+.note__day {
+    font-weight: 800;
+    font-size: 37px;
+    padding: 10px 12px 0px 18px;
+    line-height: 40px;
+}
+.note__name {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-top: 10px;
+    font-size: 17px;
+}
+.note__date {
+    width: 100%;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
+    text-align: center;
+}
+.note__descip, .note__time {
+    font-weight: 600;
+    color: #e8e8e8;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+}
+.note__time {
+    margin-right: 10px;
+}
+.note__descip {
+}
+
+
+/* MODAL WINDOW */
+
+.modal {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    color:#e8e8e8;
+    z-index: 10;
+    background-color: rgba(11, 11, 11, 0.7);
+}
+.modal.open {
+    display: block;
+}
+.modal__box {
+    width: 500px;
+    height: 630px;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px 70px;
+    position: relative;
+
+    background-color:#18191D;
+    box-shadow: 0px 2px 36px 15px rgba(0,0,0,0.59);
+    border-radius: 15px;
+}
+.modal__btn-close{
+    position: absolute;
+    top: 10px;
+    display: block;
+    left: 20px;
+    padding: 10px;
+}
+.fa-long-arrow-alt-left{
+    color:#C7C7C5;
+    font-size: 30px;
+}
+.modal__btn-close:active{
+    opacity: 0.3;
+}
+.modal__inner {
+    /*background-color: #777777;*/
+}
+
+/* < MODAL-HEADER > */
+
+.modal-header {
+}
+.modal-header__title{
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.3px;
+    color:#C7C7C5;
+    font-size: 30px;
+    margin-bottom: 12px;
+    vertical-align: baseline;
+}
+.modal-header__date{
+    margin-bottom: 25px;
+    font-family: 'Montserrat', sans-serif;
+    color:#C7C7C5;
+    font-size: 13px;
+}
+
+/* </ MODAL-HEADER > */
+
+/* < MODAL-DAYS > */
+
+.modal-days {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 40px;
+}
+.modal-days__item {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 20px 22px -4px rgba(98,86,170,0.47);
+
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    font-family: 'Oswald', sans-serif;
+    color: #595A5E;
+    cursor: pointer;
+}
+.modal-days__item.active{
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    background-color: #6256AA;
+    border-radius: 8px;
+}
+.modal-days__item.active .modal-days__num{
+    font-size: 18px;
+}
+
+/* </ MODAL-DAYS > */
+
+/* < MODAL-BTNS > */
+
+.modal-btns {
+    margin-bottom: 20px;
+    display: none;
+}
+.modal-btns.open {
+    display: block;
+}
+.modal-btns__list {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+.modal-btns__item {
+    margin-right: 15px;
+    padding: 10px;
+    display: inline-block;
+    text-decoration: none;
+}
+.modal-btns__item:active {
+    opacity: 0.4;
+}
+.fa-plus, .fa-check-circle, .fa-pen, .fa-trash-alt, .fa-thumbtack{
+    color:#C7C7C5;
+    font-size: 20px;
+}
+.fa-pen, .fa-trash-alt{
+    font-size: 18px;
+}
+/* </ MODAL-BTNS > */
+
+/* < MODAL-CREATE-NOTE > */
+.modal-create-note {
+    display: none;
+}
+.modal-create-note.open {
+    display: block;
+}
+.new-note__header{
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.3px;
+    color:#C7C7C5;
+    font-size: 20px;
+    margin-bottom: 25px;
+    vertical-align: baseline;
+    font-weight: 400;
+    border-bottom: 2px solid #4C4D4D;
+    padding-bottom: 15px;
+}
+.new-note label {
+    display: block; 
+}
+.new-note__time {
+    display: flex;
+    margin-bottom: 35px;
+    font-family: 'Montserrat', sans-serif;
+}
+.time-from, .time-to{
+    width: 70px;
+    height: 25px;
+    display: block;
+
+    margin-top: 12px;
+    padding: 0 12px 4px;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #4C4D4D;
+
+    color: #ededed;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    font-size: 15px;
+}
+.time-from{
+    margin-right: 50px;
+}
+.time-to.error, .time-to.errorValue{
+    border-bottom: 1px solid #ad0000;
+}
+.time-from.error, .time-from.errorValue{
+    border-bottom: 1px solid #ad0000;
+}
+.new-note__text {
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.new-note-text {
+    width: 100%;
+    height: 50px;
+    display: block;
+
+    margin-top: 15px;
+    padding: 10px 15px;
+
+    resize: none;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.2px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    color: #18191B;
+    font-weight: 500;
+}
+.new-note-text.error {
+    border: 3px solid #ad0000;
+}
+.new-note__btns {
+}
+.new-note__add, .new-note__remove {
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+
+    margin-right: 15px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    background-color: #6256AA;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+.new-note__add:active, .new-note__remove:active {
+    opacity: 0.9;
+    position: relative;
+    transform: translateY(1px);
+}
+.new-note__add {
+    background-color: #6256AA;
+    color: #fff;
+}
+.new-note__remove {
+    background-color: #fff;
+    color: #595A5E;
+}
+/* </ MODAL-CREATE-NOTE > */
+
+/* < MODAL-NOTES > */
+
+.modal-notes {
+    width: 100%;
+    height: 280px;
+    display: none;
+    
+    padding: 35px 5px 15px;
+    overflow-y: scroll;
+    border-top: 2px solid #4C4D4D;
+}
+.modal-notes.open {
+    display: block;
+}
+.modal-notes__list {
+    width: 95%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    list-style-type: none;
+}
+.modal-notes__item {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 10px 15px;
+    margin-bottom: 10px;
+
+    background-color: #fff;
+    border-radius: 8px;
+    color: #595A5E;
+}
+
+.modal-notes__item.checked .modal-notes__time, .modal-notes__item.checked  .modal-notes__text{
+    color: #fff;
+}
+.modal-notes__time{
+    width: 35%;
+}
+.modal-notes__text {
+    width: 64%;
+}
+.modal-notes__time-from{
+    margin-right: 8px;
+    display: inline-block;
+}
+.modal-notes__item.pinned {
+    background-color: #f09238;
+    color: #fff;
+}
+.modal-notes__item.checked {
+    background-color: #6256AA;
+    color: #fff;
+}
+
+.modal-notes__item.done {
+    text-decoration: line-through;
+}
+/* </ MODAL-NOTES > */
